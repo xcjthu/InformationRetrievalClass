@@ -83,7 +83,7 @@ class CNN(nn.Module):
         self.kernel_size = 3
         self.padding_size = 1
         self.conv = nn.Conv1d(self.input_size, self.hidden_size, self.kernel_size, padding=self.padding_size)
-        self.max_len = config.getint('model', 'max_len')
+        self.max_len = config.getint('data', 'max_len')
         self.pool = nn.MaxPool1d(self.max_len)
         self.relu = nn.ReLU()
 

@@ -1,11 +1,13 @@
 import logging
 
 from .SentSent import SentSentFormatter
+from .nlp.BasicBertFormatter import BasicBertFormatter
 
 logger = logging.getLogger(__name__)
 
 formatter_list = {
     'SentSent': SentSentFormatter,
+    "BasicBert": BasicBertFormatter
 }
 
 

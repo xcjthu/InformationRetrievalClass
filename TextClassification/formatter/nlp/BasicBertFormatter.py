@@ -21,7 +21,7 @@ class BasicBertFormatter(BasicFormatter):
             label = []
 
         for temp in data:
-            text = temp["text"]
+            text = temp.parse()
             token = self.tokenizer.tokenize(text)
             token = ["[CLS]"] + token
 
@@ -32,7 +32,7 @@ class BasicBertFormatter(BasicFormatter):
 
             input.append(token)
             if mode != "test":
-                label.append(temp["label"])
+                label.append(temp.score)
 
         input = torch.LongTensor(input)
         if mode != "test":

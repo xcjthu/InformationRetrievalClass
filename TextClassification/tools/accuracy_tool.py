@@ -53,13 +53,16 @@ def gen_micro_macro_result(res):
     macro_recall /= len(f1)
     macro_f1 /= len(f1)
 
+    accu = (total["TP"] + total["TN"]) / (total["TP"] + total["FP"] + total["FN"] + total["TN"])
+
     return {
         "micro_precision": round(micro_precision, 3),
         "micro_recall": round(micro_recall, 3),
         "micro_f1": round(micro_f1, 3),
         "macro_precision": round(macro_precision, 3),
         "macro_recall": round(macro_recall, 3),
-        "macro_f1": round(macro_f1, 3)
+        "macro_f1": round(macro_f1, 3),
+        "accu": round(accu, 4),
     }
 
 

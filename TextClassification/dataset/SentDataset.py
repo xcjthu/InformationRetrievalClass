@@ -4,19 +4,23 @@ from torch.utils.data import Dataset
 
 
 class SentDataset(Dataset):
-    def __init__(self, config, mode, encoding="utf8", *args, **params):
-        self.config = config
-        self.mode = mode
+	def __init__(self, config, mode, encoding="utf8", *args, **params):
+		self.config = config
+		self.mode = mode
 
-        self.data_path = config.get("data", "%s_data_path" % mode)
-        fin = open(self.data_path, 'r')
-        self.data = [Tree(line) for line in fin]
-    
-    def __getitem__(self, item):
-        return self.data[item]
-    
-    def __len__(self):
-        return len(self.data)
+		self.data_path = config.get("data", "%s_data_path" % mode)
+		fin = open(self.data_path, 'r')
+		self.data = [Tree(line) for line in fin]
+		max_len = 0
+		for d in self.data:
+			max_len = max(max_len, len(d.parse()))
+		print(max_len)
+
+	def __getitem__(self, item):
+		return self.data[item]
+
+	def __len__(self):
+		return len(self.data)
 
 
 class Tree:
