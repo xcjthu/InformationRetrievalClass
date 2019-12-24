@@ -1,7 +1,8 @@
 from .nlp.BasicBert import BasicBert
-
+from .SentClassify import SentClassify
 model_list = {
-    "BasicBert": BasicBert
+    "BasicBert": BasicBert,
+    "SentClassify": SentClassify,
 }
 
 
